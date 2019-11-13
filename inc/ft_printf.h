@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:35:09 by hmathew           #+#    #+#             */
-/*   Updated: 2019/11/11 20:49:27 by hmathew          ###   ########.fr       */
+/*   Updated: 2019/11/13 18:30:20 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <sys/types.h>
+# include <stdarg.h>
 
 # include "libft.h"
 # include "ft_printf_buffer.h"
