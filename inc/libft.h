@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 23:24:33 by hmathew           #+#    #+#             */
-/*   Updated: 2019/11/11 17:31:31 by hmathew          ###   ########.fr       */
+/*   Updated: 2019/12/11 20:24:44 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_isspace(int c);
 int				ft_atoi(const char *str);
+int				ft_atoi_necessarily(const char *str, int *ret);
 char			*ft_strdup(const char *s);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strncpy(char *dst, const char *src, size_t len);

@@ -6,7 +6,7 @@
 #    By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 17:16:22 by hmathew           #+#    #+#              #
-#    Updated: 2019/11/16 14:11:48 by hmathew          ###   ########.fr        #
+#    Updated: 2019/12/11 21:51:20 by hmathew          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,20 +29,20 @@ INC 			=	inc
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "\033[0;32m [$(PROJ_NAME)] \033[0m       \033[0;33m Compiling binary:\033[0m" $@
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Compiling binary:\033[0m" $@
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
 %.o: %.c
-	@echo "\033[0;32m [$(PROJ_NAME)] \033[0m       \033[0;33m Compiling:\033[0m" $<
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Compiling:\033[0m" $<
 	@$(CC) -o $@ -c $< $(CFLAGS) $(addprefix -I,$(INC))
 
 clean:
-	@echo "\033[0;32m [$(PROJ_NAME)] \033[0m       \033[0;33m Cleaning libft objects\033[0m" $<
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Cleaning libft objects\033[0m" $<
 	@rm -f $(OBJ)
 
 fclean: clean
-	@echo "\033[0;32m [$(PROJ_NAME)] \033[0m       \033[0;33m Cleaning libft binary\033[0m" $<
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Cleaning libft binary\033[0m" $<
 	@rm -f $(NAME)
 
 re: fclean all
