@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 23:24:33 by hmathew           #+#    #+#             */
-/*   Updated: 2019/12/11 20:24:44 by hmathew          ###   ########.fr       */
+/*   Updated: 2019/12/13 17:12:58 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,7 @@ char			*ft_strrev(char *str);
 char			*ft_str_to_lowcase(char *str);
 
 int				ft_abs(int n);
+
+void			*ft_realloc(void *ptr, size_t size);
 
 #endif
