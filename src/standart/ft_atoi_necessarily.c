@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 20:23:41 by hmathew           #+#    #+#             */
-/*   Updated: 2019/12/11 20:24:22 by hmathew          ###   ########.fr       */
+/*   Updated: 2019/12/21 14:56:05 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int		ft_atoi_necessarily(const char *str, int *ret)
 	int nbr;
 	int nbrtemp;
 
+	if (str == NULL)
+		return (0);
 	while (ft_isspace(*str))
 		str++;
 	sign = 1;
