@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 17:03:30 by hmathew           #+#    #+#             */
-/*   Updated: 2019/12/13 23:16:38 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/02/19 17:51:43 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,3 @@ void *array_resize_with_member_size(void *arr, size_t length, size_t member_size
     ((size_t *)arr)[WHERE_MEMBER_SIZE] = member_size;
     return arr;
 }
-
-
-

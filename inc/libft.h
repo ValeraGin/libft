@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 23:24:33 by hmathew           #+#    #+#             */
-/*   Updated: 2019/12/13 17:12:58 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/01/15 17:39:48 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdint.h>
 # include <wchar.h>
 # include <unistd.h>
+
+# include <ft_printf.h>
+# include <get_next_line.h>
 
 # define FT_MIN(x, y)		((x) < (y) ? (x) : (y))
 # define FT_MAX(x, y)		((x) > (y) ? (x) : (y))
@@ -31,6 +34,7 @@ typedef struct	s_list
 }				t_list;
 
 size_t			ft_strlen(const char *s);
+
 int				ft_isupper(int c);
 int				ft_islower(int c);
 int				ft_isalpha(int c);
@@ -125,5 +129,10 @@ char			*ft_str_to_lowcase(char *str);
 int				ft_abs(int n);
 
 void			*ft_realloc(void *ptr, size_t size);
+
+
+
+char		*replace_file_ext(char *filename, const char *new_ext);
+int			check_file_ext(char *filename, const char ext);
 
 #endif
