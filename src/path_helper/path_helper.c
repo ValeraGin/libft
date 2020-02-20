@@ -6,13 +6,13 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 17:38:50 by hmathew           #+#    #+#             */
-/*   Updated: 2020/01/15 17:39:23 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/02/20 14:05:36 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			check_file_ext(char *filename, const char ext)
+int			check_file_ext(char *filename, const char *ext)
 {
 	char *point;
 

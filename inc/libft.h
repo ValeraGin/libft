@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 23:24:33 by hmathew           #+#    #+#             */
-/*   Updated: 2020/01/15 17:39:48 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/02/20 14:05:56 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,6 @@ void			*ft_realloc(void *ptr, size_t size);
 
 
 char		*replace_file_ext(char *filename, const char *new_ext);
-int			check_file_ext(char *filename, const char ext);
+int			check_file_ext(char *filename, const char *ext);
 
 #endif
