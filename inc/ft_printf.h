@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:35:09 by hmathew           #+#    #+#             */
-/*   Updated: 2019/11/13 18:30:20 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/02/26 18:33:26 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define PF_BLUE		"\033[34m"
 # define PF_PURPLE		"\033[35m"
 # define PF_CYAN		"\033[36m"
-# define PF_EOC			"\033[36m"
+# define PF_EOC			"\033[0m"
 
 typedef int	(*t_print_function)(t_buff *bi, t_spec *param);
 typedef int	(*t_arginfo_func)(t_spec *param);
