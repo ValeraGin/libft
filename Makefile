@@ -6,43 +6,57 @@
 #    By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 17:16:22 by hmathew           #+#    #+#              #
-#    Updated: 2019/12/11 21:51:20 by hmathew          ###   ########.fr        #
+#    Updated: 2020/02/29 16:19:08 by hmathew          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJ_NAME=LIBFT
-NO_COLOR=\x1b[0m
-OK_COLOR=\x1b[32;01m
-ERROR_COLOR=\x1b[31;01m
-WARN_COLOR=\x1b[33;01m
-OK_STRING="$(OK_COLOR)[OK]$(NO_COLOR)"
+PROJ_NAME	?= LIBFT
+TARGET_EXEC	?= libft.a
 
-CC				=	gcc
-CFLAGS			=	-g -Wall -Wextra -Werror -O3
-AR				=	ar
-ARFLAGS			=	rc
-NAME			=	libft.a
-SRC				=	$(shell find src -type f | grep -E "\.c$$")
-OBJ				=	$(SRC:.c=.o)
-INC 			=	inc
+BUILD_DIR	?= ./obj
+SRC_DIRS	?= ./src
 
-all: $(NAME)
+SRCS		:= $(shell find $(SRC_DIRS) -type f -name *.c )
+OBJS		:= $(SRCS:%=$(BUILD_DIR)/%.o)
+DEPS		:= $(OBJS:.o=.d)
 
-$(NAME): $(OBJ)
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Compiling binary:\033[0m" $@
-	@$(AR) $(ARFLAGS) $(NAME) $(OBJ)
-	@ranlib $(NAME)
+INC_DIRS	:= inc
+INC_FLAGS	:= $(addprefix -I,$(INC_DIRS))
+CDEBUGFLAG	= -g
+CFLAGS		?= $(CDEBUGFLAG) -Wall -Wextra -Werror -O3 $(INC_FLAGS) -MMD -MP
 
-%.o: %.c
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Compiling:\033[0m" $<
-	@$(CC) -o $@ -c $< $(CFLAGS) $(addprefix -I,$(INC))
+ARFLAGS		= rc
+
+# make libft file
+$(TARGET_EXEC): $(OBJS)
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Compiling library binary:\033[0m" $@
+	@$(AR) $(ARFLAGS) $(TARGET_EXEC) $(OBJS)
+
+# c source
+$(BUILD_DIR)/%.c.o: %.c
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Compiling:\033[0m" $<
+	@$(MKDIR_P) $(dir $@)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY: all clean fclean re
+
+all: $(TARGET_EXEC)
 
 clean:
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Cleaning libft objects\033[0m" $<
-	@rm -f $(OBJ)
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Clean objects $(PROJ_NAME) \033[0m" $<
+	@$(RM) -r $(BUILD_DIR)
 
-fclean: clean
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m       \033[0;33m Cleaning libft binary\033[0m" $<
-	@rm -f $(NAME)
+fclean:
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Clean objects $(PROJ_NAME) \033[0m" $<
+	@$(RM) -r $(BUILD_DIR)
+	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Clean bin $(PROJ_NAME) \033[0m" $<
+	@rm -rf $(TARGET_EXEC)
 
 re: fclean all
+
+-include $(DEPS)
+
+MKDIR_P ?= mkdir -p
+
+
+
