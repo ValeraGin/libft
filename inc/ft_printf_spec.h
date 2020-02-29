@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:50:50 by hmathew           #+#    #+#             */
-/*   Updated: 2019/11/11 22:12:06 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/02/29 14:52:41 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,23 @@
 # define PF_NO_INIT -1
 
 # define PA_FLAG_MASK 0xff00
-# define PA_FLAG_UNSIGNED (1 << 8)
-# define PA_FLAG_SIZE_START (1 << 9)
-# define PA_FLAG_CHAR (1 << 10)
-# define PA_FLAG_SHORT (1 << 11)
-# define PA_FLAG_LONG (1 << 12)
-# define PA_FLAG_LONG_LONG (1 << 13)
-# define PA_FLAG_LONG_DOUBLE (1 << 14)
-# define PA_FLAG_SIZE_T (1 << 15)
-# define PA_FLAG_INTMAX (1 << 16)
-# define PA_FLAG_PTR (1 << 17)
 
-enum {
+enum
+{
+	PA_FLAG_UNSIGNED = (1 << 8),
+	PA_FLAG_SIZE_START = (1 << 9),
+	PA_FLAG_CHAR = (1 << 10),
+	PA_FLAG_SHORT = (1 << 11),
+	PA_FLAG_LONG = (1 << 12),
+	PA_FLAG_LONG_LONG = (1 << 13),
+	PA_FLAG_LONG_DOUBLE = (1 << 14),
+	PA_FLAG_SIZE_T = (1 << 15),
+	PA_FLAG_INTMAX = (1 << 16),
+	PA_FLAG_PTR = (1 << 17),
+};
+
+enum
+{
 	PF_FLAG_SHARP = (1 << 0),
 	PF_FLAG_ZERO = (1 << 1),
 	PF_FLAG_MINUS = (1 << 2),

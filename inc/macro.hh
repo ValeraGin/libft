@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   macro.hh                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 16:06:37 by hmathew           #+#    #+#             */
-/*   Updated: 2020/02/29 14:52:58 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/02/29 14:50:33 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef MACRO_H
+# define MACRO_H
 
-# define BUFF_SIZE	100
-# define MAX_FD		1025
-
-# define GNL_ERROR -1
-# define GNL_FINISHED 0
-# define GNL_OK 1
-
-# define GNL_LINEOK 1
-# define GNL_LINEBAD 0
-
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft.h"
-
-int	get_next_line(const int fd, char **line);
+# define FT_MIN(x, y)		((x) < (y) ? (x) : (y))
+# define FT_MAX(x, y)		((x) > (y) ? (x) : (y))
+# define FT_ABS(x)			(((x) < 0) ? -(x) : (x))
+# define FT_SWAP(a, b)		({(a) ^= (b); (b) ^= (a); (a) ^= (b);})
 
 #endif
+
+
+

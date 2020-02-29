@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 23:24:33 by hmathew           #+#    #+#             */
-/*   Updated: 2020/02/27 20:39:06 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/02/29 14:50:01 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@
 # include <ft_printf.h>
 # include <get_next_line.h>
 
-# define FT_MIN(x, y)		((x) < (y) ? (x) : (y))
-# define FT_MAX(x, y)		((x) > (y) ? (x) : (y))
-# define FT_ABS(x)			(((x) < 0) ? -(x) : (x))
-# define FT_SWAP(a, b)		({(a) ^= (b); (b) ^= (a); (a) ^= (b);})
+# include <macro.hh>
 
 typedef struct	s_list
 {
