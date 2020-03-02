@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 16:06:34 by hmathew           #+#    #+#             */
-/*   Updated: 2019/11/28 22:50:59 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/03/02 18:11:12 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ int			get_next_line(const int fd, char **line)
 		if (gnl_get_line(&stack[fd], line) == GNL_LINEOK)
 		{
 			ft_memdel((void *)&heap);
-			return (1);
+			return (GNL_OK);
 		}
 	ft_memset(heap, '\0', BUFF_SIZE + 1);
 	ret_read = gnl_read_fd(fd, heap, &stack[fd], line);
 	ft_memdel((void *)&heap);
-	if (ret_read || !stack[fd] || !stack[fd][0])
+	if (ret_read || !stack[fd])
 	{
 		if (!ret_read && *line)
 			*line = NULL;
