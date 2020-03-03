@@ -6,7 +6,7 @@
 #    By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 17:16:22 by hmathew           #+#    #+#              #
-#    Updated: 2020/02/29 16:29:00 by hmathew          ###   ########.fr        #
+#    Updated: 2020/03/03 22:08:30 by hmathew          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ DEPS		:= $(OBJS:.o=.d)
 INC_DIRS	:= inc
 INC_FLAGS	:= $(addprefix -I,$(INC_DIRS))
 CDEBUGFLAG	= -g
-CFLAGS		?= $(CDEBUGFLAG) -Wall -Wextra -Werror -O3 $(INC_FLAGS) -MMD -MP
+CFLAGS		?= $(CDEBUGFLAG) -Wall -Wextra -Werror $(INC_FLAGS) -MMD -MP
 
 ARFLAGS		= rc
 
