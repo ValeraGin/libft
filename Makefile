@@ -13,7 +13,28 @@
 PROJ_NAME	?= LIBFT
 TARGET_EXEC	?= libft.a
 
-BUILD_DIR	?= ./obj
+OBJ_DIR = ./obj
+
+FILE_LAST_MODE = $(OBJ_DIR)/last_version.txt
+cat := $(if $(filter $(OS),Windows_NT),type,cat)
+LAST_MODE = $(shell $(cat) $(FILE_LAST_MODE) 2>/dev/null)
+
+ifneq ($(mode),debug)
+   mode = release
+   BUILD_DIR = $(OBJ_DIR)/release
+   INFO_MESSAGE = "\033[0;32m[$(PROJ_NAME)]\e[95m[$(PREFIX)]\033[0m      \033[0;33m Release mode compilation ON\033[0m"
+   PREFIX = RELEASE MODE
+else
+   mode = debug
+   BUILD_DIR = $(OBJ_DIR)/debug
+   PREFIX = DEBUG MODE
+   INFO_MESSAGE = "\033[0;32m[$(PROJ_NAME)]\e[95m[$(PREFIX)]\033[0m      \033[0;33m Debug mode compilation\033[0m"
+endif
+
+ifneq ($(mode),$(LAST_MODE))
+    REBUILD = clean_only_exe
+endif
+
 SRC_DIRS	?= ./src
 
 SRCS		:= $(shell find $(SRC_DIRS) -type f -name *.c )
@@ -22,38 +43,54 @@ DEPS		:= $(OBJS:.o=.d)
 
 INC_DIRS	:= inc
 INC_FLAGS	:= $(addprefix -I,$(INC_DIRS))
-CDEBUGFLAG	= -g
-CFLAGS		?= $(CDEBUGFLAG) -Wall -Wextra -Werror -O3 $(INC_FLAGS) -MMD -MP
+
+CFLAGS		?= -Wall -Wextra -Werror $(INC_FLAGS) -MMD -MP
+ifeq ($(mode),release)
+   CFLAGS += -O3
+else
+   CFLAGS += -O0 -g
+endif
 
 ARFLAGS		= rc
 
+.PHONY: all clean fclean re info
+
+all: info $(TARGET_EXEC)
+
+clean_only_exe:
+	@echo "\033[0;32m[$(PROJ_NAME)]\033[0m      \033[0;33m Clean bin $(PROJ_NAME), because changed MODE COMPILATION \033[0m" $<
+	@rm -rf $(TARGET_EXEC)
+
 # make libft file
-$(TARGET_EXEC): $(OBJS)
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Compiling library binary:\033[0m" $@
+$(TARGET_EXEC): $(OBJS) $(REBUILD)
+	@echo "\033[0;32m[$(PROJ_NAME)]\e[95m[$(PREFIX)]\033[0m    \033[0;33m Compiling library binary:\033[0m" $@
 	@$(AR) $(ARFLAGS) $(TARGET_EXEC) $(OBJS)
+	@rm -f $(FILE_LAST_MODE)
+	@echo "$(mode)" >> $(FILE_LAST_MODE)
 
 # c source
 $(BUILD_DIR)/%.c.o: %.c
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Compiling:\033[0m" $<
+	@echo "\033[0;32m[$(PROJ_NAME)]\e[95m[$(PREFIX)]\033[0m    \033[0;33m Compiling:\033[0m" $<
 	@$(MKDIR_P) $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean fclean re
-
-all: $(TARGET_EXEC)
+info:
 
 clean:
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Clean objects $(PROJ_NAME) \033[0m" $<
-	@$(RM) -r $(BUILD_DIR)
+	@echo "\033[0;32m[$(PROJ_NAME)]\033[0m    \033[0;33m Clean objects $(PROJ_NAME) \033[0m" $<
+	@$(RM) -rf $(OBJ_DIR)
 
 fclean:
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Clean objects $(PROJ_NAME) \033[0m" $<
-	@$(RM) -r $(BUILD_DIR)
-	@echo "\033[0;32m[$(PROJ_NAME)] \033[0m    \033[0;33m Clean bin $(PROJ_NAME) \033[0m" $<
+	@echo "\033[0;32m[$(PROJ_NAME)]\033[0m    \033[0;33m Clean objects $(PROJ_NAME) \033[0m" $<
+	@$(RM) -rf $(OBJ_DIR)
+	@echo "\033[0;32m[$(PROJ_NAME)]\033[0m    \033[0;33m Clean bin $(PROJ_NAME) \033[0m" $<
 	@rm -rf $(TARGET_EXEC)
+
+norme:
+	@norminette | grep Error -B 1
 
 re: fclean all
 
--include $(DEPS)
+# -include $(DEPS)
 
 MKDIR_P ?= mkdir -p
