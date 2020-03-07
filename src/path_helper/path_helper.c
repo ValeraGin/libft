@@ -6,7 +6,7 @@
 /*   By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 17:38:50 by hmathew           #+#    #+#             */
-/*   Updated: 2020/02/20 19:49:16 by hmathew          ###   ########.fr       */
+/*   Updated: 2020/03/07 19:25:59 by hmathew          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			check_file_ext(const char *filename, const char *ext)
 	char *point;
 
 	if ((point = ft_strrchr(filename, '.')) != NULL)
-		if (strcmp(point, ext) == 0)
+		if (ft_strcmp(point, ext) == 0)
 			return (1);
 	return (0);
 }
