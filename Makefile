@@ -6,7 +6,7 @@
 #    By: hmathew <hmathew@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 17:16:22 by hmathew           #+#    #+#              #
-#    Updated: 2020/03/07 14:25:12 by hmathew          ###   ########.fr        #
+#    Updated: 2020/03/07 15:01:33 by hmathew          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,6 @@ norme:
 
 re: fclean all
 
-# -include $(DEPS)
+-include $(DEPS)
 
 MKDIR_P ?= mkdir -p
